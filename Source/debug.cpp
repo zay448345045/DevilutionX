@@ -42,7 +42,7 @@ namespace devilution {
 std::string TestMapPath;
 OptionalOwnedClxSpriteList pSquareCel;
 bool DebugToggle = false;
-bool DebugGodMode = false;
+bool DebugGodMode = true;
 bool DebugVision = false;
 bool DebugPath = false;
 bool DebugGrid = false;
@@ -1308,3 +1308,4 @@ bool ShouldHighlightDebugAutomapTile(Point position)
 } // namespace devilution
 
 #endif
+
