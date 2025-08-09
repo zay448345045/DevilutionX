@@ -3,11 +3,15 @@ name: Android
 on:
   push:
     branches:
-      - master
+      - 1.5-easy-version
+    paths:
+      - 'android-action.on
+  workflow_dispatch: 
     paths-ignore:
       - '*.md'
   pull_request:
-    types: [ opened, synchronize ]
+      - 1.5-easy-version
+#    types: [ opened, synchronize ]
     paths-ignore:
       - '*.md'
 
@@ -23,12 +27,12 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y gettext
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
     - name: set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'adopt'
@@ -39,7 +43,7 @@ jobs:
         $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "cmake;3.31.0"
 
     - name: Cache CMake build folder
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: android-project/app/.cxx
         key: ${{ github.workflow }}-v2-${{ github.sha }}
@@ -57,5 +61,5 @@ jobs:
         name: devilutionx-debug.apk
         path: android-project/app/build/outputs/apk/debug/app-debug.apk
 
-    - name: Clean up artifacts
-      run: rm -rf android-project/app/build/outputs
+#    - name: Clean up artifacts
+#      run: rm -rf android-project/app/build/outputs
