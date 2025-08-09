@@ -5,15 +5,16 @@ on:
     branches:
       - 1.5-easy-version
     paths:
-      - 'android-action.on
+      - 'android-project/android-action.on'
   workflow_dispatch: 
-    paths-ignore:
-      - '*.md'
+#    paths-ignore:
+#      - '*.md'
   pull_request:
+    branches:
       - 1.5-easy-version
-#    types: [ opened, synchronize ]
+    types: [ opened, synchronize ]
     paths-ignore:
-      - '*.md'
+        - '*.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
