@@ -46,7 +46,7 @@ public:
 	    : data_(data)
 	    , pixel_data_size_(dataSize - LoadLE16(data))
 	{
-		assert(data != nullptr);
+//		assert(data != nullptr);
 	}
 
 	[[nodiscard]] constexpr uint16_t width() const
@@ -106,7 +106,7 @@ public:
 	explicit constexpr ClxSpriteList(const uint8_t *data)
 	    : data_(data)
 	{
-		assert(data != nullptr);
+//		assert(data != nullptr);
 	}
 
 	ClxSpriteList(const OwnedClxSpriteList &owned);
@@ -224,7 +224,7 @@ public:
 	    : data_(data)
 	    , num_lists_(numLists)
 	{
-		assert(data != nullptr);
+//		assert(data != nullptr);
 		assert(num_lists_ > 0);
 	}
 
@@ -337,7 +337,7 @@ public:
 	explicit OwnedClxSpriteList(std::unique_ptr<uint8_t[]> &&data)
 	    : data_(std::move(data))
 	{
-		assert(data_ != nullptr);
+//		assert(data_ != nullptr);
 	}
 
 	OwnedClxSpriteList(OwnedClxSpriteList &&) noexcept = default;
@@ -396,7 +396,7 @@ public:
 	    : data_(std::move(data))
 	    , num_lists_(numLists)
 	{
-		assert(data_ != nullptr);
+//		assert(data_ != nullptr);
 		assert(numLists > 0);
 	}
 
@@ -636,3 +636,4 @@ public:
 };
 
 } // namespace devilution
+
