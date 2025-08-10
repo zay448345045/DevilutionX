@@ -3,11 +3,17 @@ name: Android
 on:
   push:
     branches:
-      - master
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
+          - master-easy-version
+    paths:
+      - 'android-project/android-action.on'
+  workflow_dispatch: 
+#      - master
+#    paths-ignore:
+#      - '*.md'
+#      - 'docs/**'
   pull_request:
+    branches:
+        - master-easy-version
     types: [ opened, synchronize ]
     paths-ignore:
       - '*.md'
@@ -59,5 +65,5 @@ jobs:
         name: devilutionx-debug.apk
         path: android-project/app/build/outputs/apk/debug/app-debug.apk
 
-    - name: Clean up artifacts
-      run: rm -rf android-project/app/build/outputs
+#    - name: Clean up artifacts
+#      run: rm -rf android-project/app/build/outputs
