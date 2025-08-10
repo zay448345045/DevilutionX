@@ -47,7 +47,7 @@ jobs:
        gradle-version: '8.14.3'
        validate-wrappers: false
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x ./android-project/gradlew
     - name: Install CMake
       run: |
         $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "cmake;3.31.0"
