@@ -68,17 +68,22 @@ jobs:
       with:
         name: devilutionx-debug.apk
         path: android-project/app/build/outputs/apk/debug/app-debug.apk
+    # 关键修改：在上传前先探测文件，防止路径错误导致的上传失败
+    - name: Locate and Verify APK
+      run: |
+        echo "Searching for APKs..."
+        find android-project/app/build/outputs/apk/ -name "*.apk" -ls
+        # 将 APK 移动到根目录的一个临时文件夹，方便软链接和路径识别
+        mkdir -p ./release_assets
+        find android-project/app/build/outputs/apk/ -name "*.apk" -exec cp {} ./release_assets/ \;
+
     - name: Upload to Release
-#      if: ${{ !env.ACT && github.event_name == 'workflow_dispatch' }}
       uses: softprops/action-gh-release@v2
       with:
-        # 使用通配符匹配 build/outputs 下的所有 apk 文件
-        files: android-project/app/build/outputs/apk/**/*.apk
+        # 直接使用我们整理好的路径
+        files: ./release_assets/*.apk
         tag_name: debug-build-${{ github.run_number }}
-        name: Debug Build ${{ github.run_number }}
-        body: |
-          包含构建目录下的所有 APK 文件。
-          Commit: ${{ github.sha }}
+        name: Debug Build ${{ github.run_number }} (${{ github.event.inputs.branch }})
         draft: true
         prerelease: true
       env:
