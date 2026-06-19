@@ -43,7 +43,7 @@ std::string TestMapPath;
 OptionalOwnedClxSpriteList pSquareCel;
 bool DebugToggle = false;
 bool DebugGodMode = true;
-bool DebugVision = true;
+bool DebugVision = false;
 bool DebugPath = false;
 bool DebugGrid = false;
 std::unordered_map<int, Point> DebugCoordsMap;
