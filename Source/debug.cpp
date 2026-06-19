@@ -41,7 +41,7 @@ namespace devilution {
 
 std::string TestMapPath;
 OptionalOwnedClxSpriteList pSquareCel;
-bool DebugToggle = false;
+bool DebugToggle = true;
 bool DebugGodMode = true;
 bool DebugVision = false;
 bool DebugPath = false;
